@@ -7,12 +7,17 @@ set -e
 
 # 默认配置
 DEFAULT_NETWORK="mainnet"
-DEFAULT_BLOCK="19000000"
+DEFAULT_BLOCK="18500000"  # 与 .env 保持一致
 DEFAULT_PORT="8545"
 
-# 获取参数
+# 加载环境变量 (如果存在)
+if [ -f .env ]; then
+    source .env
+fi
+
+# 获取参数，优先使用 .env 中的配置
 NETWORK=${1:-$DEFAULT_NETWORK}
-BLOCK_NUMBER=${2:-$DEFAULT_BLOCK}
+BLOCK_NUMBER=${2:-${FORK_BLOCK_NUMBER:-$DEFAULT_BLOCK}}
 PORT=${3:-$DEFAULT_PORT}
 
 echo "🚀 启动 Foundry Fork 网络..."
@@ -20,16 +25,10 @@ echo "📊 网络: $NETWORK"
 echo "🔢 区块高度: $BLOCK_NUMBER"
 echo "🔌 端口: $PORT"
 
-# 检查 .env 文件
+# 检查 .env 文件 (环境变量已在上面加载)
 if [ ! -f .env ]; then
-    echo "⚠️  未找到 .env 文件，复制 .env.example 创建配置文件"
-    cp .env.example .env
-    echo "📝 请编辑 .env 文件填入真实的 RPC URL"
-    exit 1
+    echo "⚠️  未找到 .env 文件，使用默认配置"
 fi
-
-# 加载环境变量
-source .env
 
 # 根据网络选择RPC URL
 case $NETWORK in
