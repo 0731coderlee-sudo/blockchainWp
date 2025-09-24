@@ -3,9 +3,12 @@
 
 Integrate RPC
 
-forge create BuyMeACoffee \
---rpc-url https://virtual.mainnet.eu.rpc.tenderly.co/2beac3f2-1d29-419a-af9b-c3639e77edc6 \
---etherscan-api-key=$TENDERLY_ACCESS_KEY \
---private-key $PRIVATE_KEY
+forge create Counter \
+--private-key $PRIVATE_KEY  \
+--rpc-url $TENDERLY_VIRTUAL_TESTNET_RPC \
+--etherscan-api-key $TENDERLY_ACCESS_KEY \
+--broadcast \
+--verify \
+--verifier-url $TENDERLY_VERIFIER_URL
 
 

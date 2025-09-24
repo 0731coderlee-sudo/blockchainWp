@@ -28,7 +28,7 @@
 |---------|------|--------|------|----------|
 | [FakePow](#fakepow---工作量证明实现) | 自定义工作量证明(PoW)算法实现 | Python, RSA加密 | ✅ 完成 | 2025-09 |
 | [SepoliaContract](#sepoliacontract---智能合约) | 简单的以太坊智能合约示例 ([合约地址](https://sepolia.etherscan.io/address/0x852736cb75de0fa680d5d5de14056dfc993c7f66)) | Solidity | ✅ 已部署 | 2025-09 |
-| [BuyMeACoffee](#buymeacoffee---foundry项目) | 使用Foundry框架的智能合约项目 | Solidity, Foundry | 🚧 开发中 | 2025-09 |
+| [BuyMeACoffee](#buymeacoffee---foundry项目) | 使用Foundry框架的智能合约项目 ([合约地址](https://virtual.mainnet.eu.rpc.tenderly.co/2beac3f2-1d29-419a-af9b-c3639e77edc6)) | Solidity, Foundry | ✅ 已部署 | 2025-09 |
 
 ### 🚧 计划中项目
 
@@ -158,7 +158,7 @@ firstContract/
 
 **项目结构**：
 ```
-BuyMeACoffee/
+tenderly/BuyMeACoffee/
 ├── src/
 │   ├── BuyMeACoffee.sol    # 主合约文件
 │   └── Counter.sol         # 示例计数器合约
@@ -168,10 +168,13 @@ BuyMeACoffee/
 └── deployment.md          # 部署记录
 ```
 
-**部署状态**：
+**部署信息**：
 - 网络: Tenderly Virtual Mainnet
-- 状态: 🚧 待部署 (需要账户充值)
-- 工具: Foundry forge
+- 合约地址: [`0xE72B348bCA4DAAD3d8886342557d581B50Bf3971`](https://dashboard.tenderly.co/contract/16888/0xE72B348bCA4DAAD3d8886342557d581B50Bf3971)
+- 部署交易: `0xcd287505af810e175ca9713ce1a93f8ccfa6fe6de8532826d3d37971712a0aed`
+- 部署账户: `0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266`
+- 状态: ✅ 已部署并测试
+- 工具: Foundry forge + cast
 
 ## 🤖 自动化更新
 

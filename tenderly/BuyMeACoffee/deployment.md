@@ -8,15 +8,26 @@
 
 ## 部署尝试记录
 
-### 尝试 1 - 2025-09-25
+### 尝试 1 - 2025-09-25 00:00
 - **网络URL**: https://virtual.mainnet.eu.rpc.tenderly.co/2beac3f2-1d29-419a-af9b-c3639e77edc6
 - **部署账户**: 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
 - **状态**: ❌ 失败 - 账户余额不足
 - **错误**: insufficient funds for gas * price + value
 - **账户余额**: 0 ETH
 
-### 解决方案
-需要在Tenderly控制台中为部署账户充值ETH，然后重新尝试部署。
+### 尝试 2 - 2025-09-25 01:18 ✅ 成功部署
+- **充值方法**: 使用 `cast rpc tenderly_setBalance` 充值 10 ETH
+- **充值交易**: 0xf161181fea2035427d8de7a0fb54dd2028f74940702b9d5ddb9e23b530306872
+- **部署账户**: 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+- **合约地址**: 0xE72B348bCA4DAAD3d8886342557d581B50Bf3971
+- **部署交易**: 0xcd287505af810e175ca9713ce1a93f8ccfa6fe6de8532826d3d37971712a0aed
+- **状态**: ✅ 部署成功
+
+### 充值命令记录
+```bash
+# 给账户充值10 ETH
+cast rpc tenderly_setBalance 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 0x8AC7230489E80000 --rpc-url https://virtual.mainnet.eu.rpc.tenderly.co/2beac3f2-1d29-419a-af9b-c3639e77edc6
+```
 
 ## 合约ABI
 ```json
