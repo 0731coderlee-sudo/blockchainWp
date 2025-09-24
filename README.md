@@ -27,7 +27,7 @@
 | 项目名称 | 描述 | 技术栈 | 状态 | 更新时间 |
 |---------|------|--------|------|----------|
 | [FakePow](#fakepow---工作量证明实现) | 自定义工作量证明(PoW)算法实现 | Python, RSA加密 | ✅ 完成 | 2024-09 |
-| [SepoliaContract](#sepoliacontract---智能合约) | 简单的以太坊智能合约示例 | Solidity | ✅ 完成 | 2024-09 |
+| [SepoliaContract](#sepoliacontract---智能合约) | 简单的以太坊智能合约示例 ([合约地址](https://sepolia.etherscan.io/address/0x852736cb75de0fa680d5d5de14056dfc993c7f66)) | Solidity | ✅ 已部署 | 2024-09 |
 
 ### 🚧 计划中项目
 
@@ -125,6 +125,10 @@ fakePow/
 ├── public_key.pem      # RSA公钥
 ├── rs.txt              # 签名结果1
 └── rs2.txt             # 签名结果2
+
+firstContract/
+├── sepoliaConter.sol   # Solidity智能合约
+└── rs.txt              # 部署记录（交易哈希和合约地址）
 ```
 
 ### SepoliaContract - 智能合约
@@ -138,7 +142,8 @@ fakePow/
 
 **部署信息**：
 - 网络: Sepolia测试网
-- 合约地址: `待部署后更新`
+- 合约地址: [`0x852736cb75de0fa680d5d5de14056dfc993c7f66`](https://sepolia.etherscan.io/address/0x852736cb75de0fa680d5d5de14056dfc993c7f66)
+- 部署交易: [`0x12f7e03f7a90e4eb93fc82427a527a36e6bc0de32a519bae037baa40d6952635`](https://sepolia.etherscan.io/tx/0x12f7e03f7a90e4eb93fc82427a527a36e6bc0de32a519bae037baa40d6952635)
 
 ## 🤝 贡献指南
 
