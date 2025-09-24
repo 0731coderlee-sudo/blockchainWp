@@ -1,0 +1,48 @@
+name: Auto Update README
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # 获取完整的git历史
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    - name: Update README with latest info
+      run: |
+        # 获取最后提交时间
+        LAST_COMMIT_DATE=$(git log -1 --format="%Y-%m")
+        
+        # 更新项目表格中的时间
+        sed -i "s/| \[\([^]]*\)\](\([^)]*\)) | \([^|]*\) | \([^|]*\) | \([^|]*\) | [0-9]\{4\}-[0-9]\{2\} |/| [\1](\2) | \3 | \4 | \5 | $LAST_COMMIT_DATE |/g" README.md
+        
+        # 检查是否有改动
+        if git diff --quiet README.md; then
+          echo "No changes to README.md"
+          exit 0
+        fi
+
+    - name: Commit changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add README.md
+        git diff --staged --quiet || git commit -m "🤖 Auto-update README timestamps"
+        
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}
