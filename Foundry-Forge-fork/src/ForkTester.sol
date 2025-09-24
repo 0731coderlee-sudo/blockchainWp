@@ -9,7 +9,7 @@ import "forge-std/interfaces/IERC20.sol";
  */
 contract ForkTester {
     // 主网上的一些知名代币地址  
-    address public constant USDC = 0xa0B86A33e6441C0cB13F6435b9cA20d0D2c3cc90; // USDC on Mainnet
+    address public constant USDC = 0xa0B86A33e6441C0cB13F6435b9cA20d0D2c3cc90; // USDC on Mainnet (Circle)
     address public constant WETH = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2; // Wrapped Ether
     address public constant DAI = 0x6B175474E89094C44Da98b954EedeAC495271d0F;  // DAI Stablecoin
     
@@ -35,12 +35,11 @@ contract ForkTester {
      * @dev 检查多个代币的余额
      */
     function checkMultipleBalances(address user) external returns (uint256[] memory) {
-        address[] memory tokens = new address[](3);
-        tokens[0] = USDC;
-        tokens[1] = WETH;
-        tokens[2] = DAI;
+        address[] memory tokens = new address[](2);
+        tokens[0] = WETH;
+        tokens[1] = DAI;
         
-        uint256[] memory balances = new uint256[](3);
+        uint256[] memory balances = new uint256[](2);
         
         for (uint i = 0; i < tokens.length; i++) {
             balances[i] = IERC20(tokens[i]).balanceOf(user);
