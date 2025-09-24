@@ -1,0 +1,11 @@
+从tenderly fork一个私有测试网络,集成到fundary的一个demo.
+
+
+Integrate RPC
+
+forge create BuyMeACoffee \
+--rpc-url https://virtual.mainnet.eu.rpc.tenderly.co/2beac3f2-1d29-419a-af9b-c3639e77edc6 \
+--etherscan-api-key=$TENDERLY_ACCESS_KEY \
+--private-key $PRIVATE_KEY
+
+
