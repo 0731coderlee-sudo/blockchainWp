@@ -36,6 +36,7 @@ jobs:
         project_mapping["fakePow"]="FakePow"
         project_mapping["firstContract"]="SepoliaContract"
         project_mapping["tenderly"]="BuyMeACoffee"
+        project_mapping["Foundry-Forge-fork"]="Foundry-Fork"
         
         echo "🗺️ 项目映射:"
         for key in "${!project_mapping[@]}"; do
