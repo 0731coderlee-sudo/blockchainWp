@@ -22,16 +22,44 @@ jobs:
 
     - name: Update README with latest info
       run: |
-        # 获取最后提交时间
-        LAST_COMMIT_DATE=$(git log -1 --format="%Y-%m")
+        # 为每个项目文件夹获取最后修改时间并更新
+        echo "🔄 开始更新项目时间戳..."
         
-        # 更新项目表格中的时间
-        sed -i "s/| \[\([^]]*\)\](\([^)]*\)) | \([^|]*\) | \([^|]*\) | \([^|]*\) | [0-9]\{4\}-[0-9]\{2\} |/| [\1](\2) | \3 | \4 | \5 | $LAST_COMMIT_DATE |/g" README.md
+        # 获取所有项目文件夹
+        for dir in */; do
+          if [[ "$dir" != ".github/" && "$dir" != "node_modules/" ]]; then
+            project_name=$(basename "$dir" "/")
+            echo "📁 处理项目: $project_name"
+            
+            # 获取该项目文件夹的最后修改时间
+            project_date=$(git log -1 --date=format:'%Y-%m' --pretty=format:'%cd' -- "$dir" 2>/dev/null || date +'%Y-%m')
+            echo "  📅 最后更新时间: $project_date"
+            
+            # 检查项目状态
+            project_status="✅ 完成"
+            if [[ -f "$dir/rs.txt" ]]; then
+              project_status="✅ 已部署"
+            elif [[ -f "$dir"*.py || -f "$dir"*.sol ]]; then
+              project_status="✅ 完成"
+            fi
+            
+            # 使用更精确的sed命令更新对应项目行
+            # 匹配包含项目名称的行，更新时间和状态
+            if grep -q "$project_name" README.md; then
+              # 更新时间 - 匹配项目名称所在的行
+              sed -i "s/\(.*$project_name.*\) [0-9]\{4\}-[0-9]\{2\} |/\1 $project_date |/" README.md
+              echo "  ✅ 已更新 $project_name 的时间戳为 $project_date"
+            fi
+          fi
+        done
         
         # 检查是否有改动
         if git diff --quiet README.md; then
-          echo "No changes to README.md"
+          echo "ℹ️  README.md 无需更新"
           exit 0
+        else
+          echo "✅ README.md 已更新"
+          git diff README.md
         fi
 
     - name: Commit changes

@@ -145,15 +145,15 @@ firstContract/
 - 合约地址: [`0x852736cb75de0fa680d5d5de14056dfc993c7f66`](https://sepolia.etherscan.io/address/0x852736cb75de0fa680d5d5de14056dfc993c7f66)
 - 部署交易: [`0x12f7e03f7a90e4eb93fc82427a527a36e6bc0de32a519bae037baa40d6952635`](https://sepolia.etherscan.io/tx/0x12f7e03f7a90e4eb93fc82427a527a36e6bc0de32a519bae037baa40d6952635)
 
-## � 自动化更新
+## 🤖 自动化更新
 
-本项目配置了自动化工具来保持README信息同步：
+本项目使用 **GitHub Actions** 自动维护README信息：
 
-- **GitHub Actions**: 每次push自动更新时间戳和项目状态
-- **本地脚本**: 手动更新工具 (`scripts/update-readme.sh`, `scripts/update_readme.py`)
-- **智能检测**: 自动识别项目状态和部署情况
+- ✅ **自动更新时间戳**: 基于git提交记录更新各项目的最后修改时间
+- ✅ **智能状态检测**: 自动识别项目完成状态和部署情况  
+- ✅ **零维护成本**: 每次push后自动运行，无需手动操作
 
-详细说明请查看: [`scripts/README.md`](scripts/README.md)
+> 💡 **工作原理**: 每当你push代码到main分支时，GitHub Actions会自动扫描各项目文件夹，获取最新的git提交时间并更新到README表格中。
 
 ## �🤝 贡献指南
 
