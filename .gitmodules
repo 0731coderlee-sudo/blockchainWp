@@ -1,0 +1,3 @@
+[submodule "tenderly/BuyMeACoffee/lib/forge-std"]
+	path = tenderly/BuyMeACoffee/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std

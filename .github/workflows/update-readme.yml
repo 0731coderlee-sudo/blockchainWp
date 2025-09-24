@@ -29,6 +29,7 @@ jobs:
         declare -A project_mapping
         project_mapping["fakePow"]="FakePow"
         project_mapping["firstContract"]="SepoliaContract"
+        project_mapping["BuyMeACoffee"]="BuyMeACoffee"
         
         # 获取所有项目文件夹
         for dir in */; do

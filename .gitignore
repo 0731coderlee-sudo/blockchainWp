@@ -18,3 +18,12 @@ venv/
 
 # Private keys (for security)
 private_key.pem
+
+# Foundry & Solidity
+cache/
+out/
+broadcast/
+*.env
+
+# TestFolder  
+TestFolder/
