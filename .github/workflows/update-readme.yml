@@ -77,40 +77,34 @@ jobs:
               echo "📅 $project_name 最后更新时间: $formatted_date"
               
               # 检查项目状态
-              status="🔧 开发中"
+              project_status="🔧 开发中"
               echo "🔍 检查部署状态..."
               if [[ -f "$folder_name/deployment.md" ]]; then
                 echo "✅ 找到 deployment.md 文件"
-                status="✅ 已部署"
+                project_status="✅ 已部署"
+              elif find "$folder_name" -name "deployment.md" 2>/dev/null | head -1; then
+                echo "✅ 在子目录中找到 deployment.md 文件"
+                project_status="✅ 已部署"
               elif find "$folder_name" -name "*.sol" -exec grep -l "deployed" {} \; 2>/dev/null | head -1; then
                 echo "✅ 在.sol文件中找到部署标记"
-                status="✅ 已部署"
+                project_status="✅ 已部署"
               else
                 echo "🔧 未找到部署标记，标记为开发中"
               fi
               
-              echo "📊 $project_name 状态: $status"
+              echo "📊 $project_name 状态: $project_status"
               
               # 更新README中的时间戳和状态
               echo "📝 更新README..."
               
-              # 使用更安全的sed命令来更新README
-              if grep -q "| $project_name |" README.md; then
-                # 创建临时文件进行安全替换
-                temp_file=$(mktemp)
+              # 使用sed直接替换时间戳（查找包含项目名的行，替换最后的日期部分）
+              if grep -q "\[$project_name\]" README.md; then
+                echo "✅ 找到项目 $project_name 的行"
                 
-                # 使用awk进行精确的行替换
-                awk -v project="$project_name" -v date="$formatted_date" -v stat="$status" '
-                /^\| [^|]+ \| [^|]+ \| [^|]+ \| [^|]+ \|/ {
-                  if ($2 ~ project) {
-                    gsub(/\| [^|]+ \| [^|]+ \|$/, "| " date " | " stat " |")
-                  }
-                }
-                { print }
-                ' README.md > "$temp_file"
+                # 替换该行中的日期和状态
+                sed -i "s/\(\[$project_name\][^|]*|[^|]*|[^|]*|\) [^|]* | [^|]* |/\1 $project_status | $formatted_date |/" README.md
                 
-                mv "$temp_file" README.md
-                echo "✅ 已更新 $project_name 的信息"
+                echo "✅ 已更新 $project_name: $formatted_date, $project_status"
               else
                 echo "⚠️ 在README中未找到项目 $project_name"
               fi
