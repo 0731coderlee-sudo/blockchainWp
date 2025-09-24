@@ -1,0 +1,31 @@
+luckyme@macdeMacBook-Pro fakePow % python3 run.py 
+满足 4 个 0：
+用时: 0.0118 秒
+内容: luckyme28078
+Hash: 000033d52903505398848f895c7f5edc169b133c4737d67eb17225b5d5a32846
+
+满足 5 个 0：
+用时: 0.3431 秒
+内容: luckyme1033971
+Hash: 00000cfe34b56abfa4733aa2c293f546893f46490489851854df80af8fe95e70
+
+luckyme@macdeMacBook-Pro fakePow % python3 run.py
+满足 4 个 0：
+用时: 0.0125 秒
+内容: luckyme28078
+Hash: 000033d52903505398848f895c7f5edc169b133c4737d67eb17225b5d5a32846
+
+满足 5 个 0：
+用时: 0.3569 秒
+内容: luckyme1033971
+Hash: 00000cfe34b56abfa4733aa2c293f546893f46490489851854df80af8fe95e70
+
+满足 6 个 0：
+用时: 6.9960 秒
+内容: luckyme20387841
+Hash: 00000045d5ef4c994da4c31bb67f9283e493253ddc3cb2f181509605acea678d
+
+满足 7 个 0：
+用时: 68.5203 秒
+内容: luckyme195022850
+Hash: 0000000a3c0504b0258a305677cbae85073709b2b972879594640bb59fdd8d7c
