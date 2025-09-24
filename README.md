@@ -10,9 +10,7 @@
 
 - [项目概述](#-项目概述)
 - [项目列表](#-项目列表)
-- [技术栈](#-技术栈)
 - [快速开始](#-快速开始)
-- [学习路径](#-学习路径)
 - [贡献指南](#-贡献指南)
 - [联系方式](#-联系方式)
 
@@ -44,23 +42,6 @@ python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
-
-### 运行项目
-
-#### FakePow - 工作量证明实现
-```bash
-cd fakePow
-python Pow.py          # 运行PoW算法
-python verifyedPow.py  # 验证PoW结果
-```
-
-#### SepoliaContract - 智能合约
-```bash
-cd firstContract
-# 使用Remix IDE部署到Sepolia测试网
-# 合约地址将在部署后更新
-```
-
 
 ## 📖 项目详情
 
