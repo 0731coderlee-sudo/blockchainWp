@@ -25,11 +25,18 @@ jobs:
         # 为每个项目文件夹获取最后修改时间并更新
         echo "🔄 开始更新项目时间戳..."
         
+        # 项目文件夹到README项目名称的映射
+        declare -A project_mapping
+        project_mapping["fakePow"]="FakePow"
+        project_mapping["firstContract"]="SepoliaContract"
+        
         # 获取所有项目文件夹
         for dir in */; do
           if [[ "$dir" != ".github/" && "$dir" != "node_modules/" ]]; then
-            project_name=$(basename "$dir" "/")
-            echo "📁 处理项目: $project_name"
+            folder_name=$(basename "$dir" "/")
+            readme_name=${project_mapping[$folder_name]:-$folder_name}
+            
+            echo "📁 处理项目: $folder_name -> $readme_name"
             
             # 获取该项目文件夹的最后修改时间
             project_date=$(git log -1 --date=format:'%Y-%m' --pretty=format:'%cd' -- "$dir" 2>/dev/null || date +'%Y-%m')
@@ -43,12 +50,13 @@ jobs:
               project_status="✅ 完成"
             fi
             
-            # 使用更精确的sed命令更新对应项目行
-            # 匹配包含项目名称的行，更新时间和状态
-            if grep -q "$project_name" README.md; then
-              # 更新时间 - 匹配项目名称所在的行
-              sed -i "s/\(.*$project_name.*\) [0-9]\{4\}-[0-9]\{2\} |/\1 $project_date |/" README.md
-              echo "  ✅ 已更新 $project_name 的时间戳为 $project_date"
+            # 使用README中的项目名称进行匹配和更新
+            if grep -q "$readme_name" README.md; then
+              # 更新时间 - 使用README中的项目名称进行匹配
+              sed -i "s/\(.*$readme_name.*\) [0-9]\{4\}-[0-9]\{2\} |/\1 $project_date |/" README.md
+              echo "  ✅ 已更新 $readme_name 的时间戳为 $project_date"
+            else
+              echo "  ⚠️  在README中未找到项目: $readme_name"
             fi
           fi
         done
