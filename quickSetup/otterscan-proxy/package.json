@@ -1,0 +1,15 @@
+{
+  "name": "anvil-otterscan-proxy",
+  "version": "1.0.0",
+  "description": "Proxy server to make Anvil compatible with Otterscan",
+  "main": "proxy.js",
+  "scripts": {
+    "start": "node proxy.js",
+    "dev": "node proxy.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "http-proxy-middleware": "^2.0.6",
+    "cors": "^2.8.5"
+  }
+}

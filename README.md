@@ -24,10 +24,10 @@
 
 | 项目名称 | 描述 | 技术栈 | 状态 | 更新时间 |
 |---------|------|--------|------|----------|
-| [FakePow](#fakepow---工作量证明实现) | 自定义工作量证明(PoW)算法实现 | Python, RSA加密 | ✅ 已部署 | 2025-09-24 |
+| [FakePow](#fakepow---工作量证明实现) | 自定义工作量证明(PoW)算法实现 | Python, RSA加密 | ✅ 完成 | 2025-09-24 |
 | [SepoliaContract](#sepoliacontract---智能合约) | 简单的以太坊智能合约示例 ([合约地址](https://sepolia.etherscan.io/address/0x852736cb75de0fa680d5d5de14056dfc993c7f66)) | Solidity | ✅ 已部署 | 2025-09-24 |
 | [BuyMeACoffee](#buymeacoffee---foundry项目) | 使用Foundry框架的智能合约项目 ([合约地址](https://virtual.mainnet.eu.rpc.tenderly.co/2beac3f2-1d29-419a-af9b-c3639e77edc6)) | Solidity, Foundry | ✅ 已部署 | 2025-09-24 |
-| [Foundry-Fork](#foundry-fork---fork网络项目) | 使用Foundry Fork技术搭建的私有测试网络 | Foundry, Anvil, Solidity | ✅ 已部署 | 2025-09-24 |
+| [Foundry-Fork](#foundry-fork---fork网络项目) | 使用Foundry Fork技术搭建的私有测试网络 | Foundry, Anvil, Solidity | ✅ 完成 | 2025-09-25 |
 
 ## 🚀 快速开始
 
